@@ -1,4 +1,4 @@
-#ADR-001 — Data Model Strategy
+# ADR-001 — Data Model Strategy
 
 
 Decisão: utilizar tabelas próprias do EMS (ZEMST_*) em vez de persistir diretamente em tabelas standard SAP como EBAN.
