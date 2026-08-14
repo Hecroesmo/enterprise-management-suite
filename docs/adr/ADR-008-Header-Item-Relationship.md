@@ -4,9 +4,13 @@
 Decisão: modelar Header e Items como um único Aggregate RAP.
 
 ZEMSI_PR_HDR
+
      |      
+     
 Composition
+
      |
+     
 ZEMSI_PR_ITEM
 
 
