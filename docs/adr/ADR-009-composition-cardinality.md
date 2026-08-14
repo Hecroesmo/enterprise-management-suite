@@ -32,7 +32,7 @@ Business Rule no Submit
 
 
 
-Isto é uma decisão arquitetural bastante boa, porque demonstra a separação entre estrutura de dados e regra de negócio.
+Esta decisão arquitetural demonstra a separação entre estrutura de dados e regra de negócio.
 
 
 Status: Accepted.
