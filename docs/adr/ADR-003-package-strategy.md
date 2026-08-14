@@ -1,4 +1,4 @@
-#ADR-003 — Package Strategy
+# ADR-003 — Package Strategy
 
 Decisão: organizar o EMS por domínio funcional.
 
