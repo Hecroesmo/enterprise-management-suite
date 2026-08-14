@@ -6,12 +6,10 @@ Decisão: utilizar UUID como chave técnica e Number Range como identificador de
 
 
 Technical Key
-
 PurchaseRequisitionUUID
 
 
 Business Key
-
 PurchaseRequisitionNumber
 
 
