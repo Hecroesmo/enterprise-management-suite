@@ -1,5 +1,5 @@
 
-#ADR-002 — Primary Key Strategy
+# ADR-002 — Primary Key Strategy
 
 
 Decisão: utilizar UUID como chave técnica e Number Range como identificador de negócio.
