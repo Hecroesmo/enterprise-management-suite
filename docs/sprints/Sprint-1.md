@@ -665,7 +665,7 @@ enterprise-management-suite/
 │
 ├── README.md
 ├── LICENSE
-├── .gitignore
+├── NOTICE
 │
 ├── docs/
 │   ├── general/
