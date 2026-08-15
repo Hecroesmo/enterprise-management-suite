@@ -662,7 +662,9 @@ SAP Certified – Back-End Developer – ABAP Cloud.
 
 ---
 
-# License
+## License
 
-See the repository `LICENSE` file for licensing information.
+This project is licensed under the Apache License 2.0.
+
+See the [LICENSE](LICENSE) file for details.
 
