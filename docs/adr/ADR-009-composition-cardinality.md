@@ -1,38 +1,91 @@
-# ADR-009 — Composition Cardinality
+# ADR-009 – Composition Cardinality
 
+## Status
 
-Decisão:
+Accepted
 
-    |  composition [0..*] of ZEMSI_PR_ITEM as _Item
+## Context
 
-e não:
+The Purchase Requisition Header is composed of Purchase Requisition Items.
 
-    |  composition [1..*]
+A decision was required between:
 
+composition [0..*]
 
-Motivação: uma PR pode existir temporariamente sem itens durante a criação.
+and:
 
+composition [1..*]
 
-Porém existe uma Business Rule:
+From a business perspective, a submitted Purchase Requisition must contain at least one Item.
 
-BR-PR-001
+However, during document creation, a Header may temporarily exist before the user has added the first Item.
 
-Uma Purchase Requisition deve possuir
-pelo menos um item antes de ser submetida.
+## Decision
 
-Ou seja:
+The CDS Composition will use:
 
-Persistência/CDS
+composition [0..*] of ZEMSI_PR_ITEM as _Item
 
-0..N Items
+The requirement for at least one Item will be enforced as a business rule before submission rather than as a structural CDS cardinality requirement.
 
-Business Rule no Submit
+Business rule:
 
-1..N Items
+**BR-PR-001 – A Purchase Requisition must contain at least one Item before it can be submitted.**
 
+Therefore:
 
+Structural model:
 
-Esta decisão arquitetural demonstra a separação entre estrutura de dados e regra de negócio.
+Header → Items = 0..N
 
+Business rule at submission:
 
-Status: Accepted.
+Header → Items >= 1
+
+## Alternatives Considered
+
+### `[1..*]`
+
+Advantages:
+
+- Expresses that a valid completed Purchase Requisition requires at least one Item.
+
+Disadvantages:
+
+- Does not represent the temporary creation state correctly.
+- Mixes business process validation with structural modeling.
+
+### `[0..*]`
+
+Advantages:
+
+- Correctly supports document creation.
+- Separates data structure from process rules.
+- Allows the Behavior layer to decide when an Item becomes mandatory.
+
+## Rationale
+
+Cardinality describes the structural relationship between entities.
+
+The minimum number of Items required to execute a business action such as Submit is a business rule.
+
+Those concerns should remain separate.
+
+## Consequences
+
+### Positive
+
+- Supports incremental document creation.
+- Clean separation between structural and business constraints.
+- Business validation can evolve independently from CDS cardinality.
+
+### Negative / Trade-offs
+
+- The application must explicitly validate the minimum Item requirement.
+- Persistence can temporarily contain active Purchase Requisitions with no Items depending on the implemented lifecycle rules.
+
+## Related Decisions
+
+- ADR-007 – Purchase Requisition Status Strategy
+- ADR-008 – Header–Item Relationship
+- ADR-010 – RAP Implementation Strategy
