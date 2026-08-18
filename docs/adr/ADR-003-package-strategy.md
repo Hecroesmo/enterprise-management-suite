@@ -1,21 +1,98 @@
-# ADR-003 — Package Strategy
+# ADR-003 – Package Strategy
 
-Decisão: organizar o EMS por domínio funcional.
+## Status
+
+Accepted
+
+## Context
+
+EMS is intended to evolve into a modular enterprise application containing multiple business domains.
+
+Without a clear package strategy, development objects could become mixed across unrelated functional areas, increasing coupling and making ownership difficult to understand.
+
+## Decision
+
+EMS will use a root package and functional packages organized by business domain.
+
+Initial structure:
 
 ZEMS
+└── ZEMS_MM
 
-- ZEMS_COMMON
+Planned future structure:
 
-- ZEMS_MM
+ZEMS
+├── ZEMS_COMMON
+├── ZEMS_MM
+├── ZEMS_FI
+├── ZEMS_SD
+├── ZEMS_HCM
+└── ZEMS_TEST
 
-- ZEMS_FI
+Only packages required by active development will be created.
 
-- ZEMS_SD
+## Alternatives Considered
 
-- ZEMS_HCM
+### Single package for all EMS objects
 
-- ZEMS_TEST
+Advantages:
 
-Atualmente apenas os packages necessários serão criados.
+- Simple initial setup.
 
-Status: Accepted.
+Disadvantages:
+
+- Poor scalability.
+- Weak separation of business domains.
+- Difficult navigation as the number of objects increases.
+
+### Technical-layer packages only
+
+Example:
+
+- Tables
+- CDS
+- Classes
+- Services
+
+Advantages:
+
+- Objects grouped by technical type.
+
+Disadvantages:
+
+- Business domain ownership becomes less clear.
+- Objects belonging to one business capability are distributed across multiple high-level packages.
+
+### Business-domain-oriented packages
+
+Advantages:
+
+- Clear functional boundaries.
+- Better ownership.
+- Easier navigation.
+- Supports future modular growth.
+
+## Rationale
+
+Business domains provide more stable architectural boundaries than technical object types.
+
+Technical organization can still exist inside each functional domain when necessary.
+
+## Consequences
+
+### Positive
+
+- Clear business ownership.
+- Improved maintainability.
+- Better scalability as EMS grows.
+- Reduced risk of unrelated objects becoming tightly coupled.
+
+### Negative / Trade-offs
+
+- Requires governance when deciding where shared functionality belongs.
+- Common functionality may require dedicated shared packages in the future.
+
+## Related Decisions
+
+- ADR-001 – Data Model Strategy
+- ADR-005 – Standard Object Reuse
