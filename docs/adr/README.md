@@ -18,6 +18,8 @@ The objective is not only to record **what** was decided, but also **why** the d
 | [ADR-008](ADR-008-header-item-relationship.md) | Header–Item Relationship | Accepted |
 | [ADR-009](ADR-009-composition-cardinality.md) | Composition Cardinality | Accepted |
 | [ADR-010](ADR-010-rap-implementation-strategy.md) | RAP Implementation Strategy | Accepted |
+| [ADR-011](ADR-011-transactional-buffer-strategy.md) | Transactional Buffer Strategy | Accepted |
+| [ADR-012](ADR-012-numbering-timing-strategy.md) | Numbering Timing Strategy | Accepted |
 
 ## ADR Lifecycle
 
