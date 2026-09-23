@@ -463,18 +463,18 @@ enterprise-management-suite/
 * [x] Create Item Interface CDS
 * [x] Define Composition
 * [x] Define Association to Parent
-* [ ] Add additional CDS semantics and annotations
+* [x] Add additional CDS semantics and annotations
 
 ## Phase 4 – Unmanaged RAP
 
-* [ ] Create Behavior Definition
-* [ ] Create Behavior Implementation
-* [ ] Implement Create
-* [ ] Implement Update
-* [ ] Implement Delete
-* [ ] Implement Read
-* [ ] Implement transactional buffer
-* [ ] Implement UUID generation
+* [x] Create Behavior Definition
+* [x] Create Behavior Implementation
+* [x] Implement Create
+* [x] Implement Update
+* [x] Implement Delete
+* [x] Implement Read
+* [x] Implement transactional buffer
+* [x] Implement UUID generation
 * [ ] Implement Number Range assignment
 * [ ] Implement validations
 * [ ] Implement state transitions
