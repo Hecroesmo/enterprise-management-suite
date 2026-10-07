@@ -1,0 +1,35 @@
+unmanaged implementation in class zbp_emsi_pr_hdr unique;
+
+define behavior for ZEMSI_PR_HDR alias PurchaseReq
+{
+  create;
+  update;
+  delete;
+
+  association _Item { create; }
+
+  field ( read only )
+    PurchaseReqUuid,
+    PurchaseReqNo,
+    Status,
+    CreatedBy,
+    CreatedAt,
+    LastChangedBy,
+    LastChangedAt,
+    LocalLastChangedAt;
+}
+
+define behavior for ZEMSI_PR_ITEM alias PurchaseReqItem
+{
+  update;
+  delete;
+
+  field ( read only )
+    PurchaseReqItemUuid,
+    PurchaseReqUuid,
+    ItemNo,
+    CreatedBy,
+    CreatedAt,
+    LastChangedBy,
+    LocalLastChangedAt;
+}

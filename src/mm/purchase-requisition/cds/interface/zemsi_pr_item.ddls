@@ -1,0 +1,32 @@
+@AbapCatalog.sqlViewName: 'ZEMSIPRITM'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AbapCatalog.viewEnhancementCategory: [#NONE]
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Purchase Requisition Item Interface'
+@Metadata.ignorePropagatedAnnotations: true
+define view ZEMSI_PR_ITEM
+  as select from zemst_pr_item
+  association to parent ZEMSI_PR_HDR as _Header
+    on $projection.PurchaseReqUuid = _Header.PurchaseReqUuid
+{
+  key purchase_req_item_uuid  as PurchaseReqItemUuid,
+      purchase_req_uuid       as PurchaseReqUuid,
+      item_no                 as ItemNo,
+      short_text              as ShortText,
+      material                as Material,
+
+      @Semantics.quantity.unitOfMeasure: 'Unit'
+      quantity                as Quantity,
+      unit                    as Unit,
+
+      @Semantics.amount.currencyCode: 'Currency'
+      net_price               as NetPrice,
+      currency                as Currency,
+
+      created_by              as CreatedBy,
+      created_at              as CreatedAt,
+      last_changed_by         as LastChangedBy,
+      local_last_changed_at   as LocalLastChangedAt,
+      _Header
+}
