@@ -1,0 +1,20 @@
+@EndUserText.label : 'Purchase requisition header table'
+@AbapCatalog.enhancementCategory : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #LIMITED
+define table zemst_pr_hdr {
+  key client                : abap.clnt not null;
+  key purchase_req_uuid     : sysuuid_x16 not null;
+  purchase_req_no           : char12;
+  description               : zemse_pr_desc not null;
+  status                    : zemse_pr_status not null;
+  company_code              : bukrs not null;
+  plant                     : werks_d not null;
+  requested_by              : syuname not null;
+  created_by                : syuname not null;
+  created_at                : timestampl not null;
+  last_changed_by           : syuname not null;
+  last_changed_at           : timestampl not null;
+  local_last_changed_at     : timestampl not null;
+}

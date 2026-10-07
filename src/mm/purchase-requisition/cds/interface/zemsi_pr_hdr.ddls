@@ -1,0 +1,24 @@
+@AbapCatalog.sqlViewName: 'ZEMSIPRHDR'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Purchase Requisition Header Interface'
+@Metadata.ignorePropagatedAnnotations: true
+define root view ZEMSI_PR_HDR
+  as select from zemst_pr_hdr
+  composition [0..*] of ZEMSI_PR_ITEM as _Item
+{
+  key purchase_req_uuid     as PurchaseReqUuid,
+      purchase_req_no       as PurchaseReqNo,
+      description           as Description,
+      status                as Status,
+      company_code          as CompanyCode,
+      plant                 as Plant,
+      requested_by          as RequestedBy,
+      created_by            as CreatedBy,
+      created_at            as CreatedAt,
+      last_changed_by       as LastChangedBy,
+      last_changed_at       as LastChangedAt,
+      local_last_changed_at as LocalLastChangedAt,
+      _Item
+}

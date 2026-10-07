@@ -1,0 +1,26 @@
+@EndUserText.label : 'Purchase requisition item table'
+@AbapCatalog.enhancementCategory : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #LIMITED
+define table zemst_pr_item {
+  key client                  : abap.clnt not null;
+  key purchase_req_item_uuid  : sysuuid_x16 not null;
+  purchase_req_uuid           : sysuuid_x16 not null;
+  item_no                     : bnfpo not null;
+  short_text                  : txz01 not null;
+  material                    : matnr;
+
+  @Semantics.quantity.unitOfMeasure : 'zemst_pr_item.unit'
+  quantity                    : menge_d not null;
+  unit                        : meins not null;
+
+  @Semantics.amount.currencyCode : 'zemst_pr_item.currency'
+  net_price                   : bprei not null;
+  currency                    : waers not null;
+
+  created_by                  : syuname not null;
+  created_at                  : timestampl not null;
+  last_changed_by             : syuname not null;
+  local_last_changed_at       : timestampl not null;
+}
